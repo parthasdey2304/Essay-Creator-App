@@ -5,18 +5,13 @@ from langchain_core.messages import HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 from flask import Flask, jsonify, request, send_file, send_from_directory
 
-# 🔥 FILL THIS OUT FIRST! 🔥
-# 🔥 GET YOUR GEMINI API KEY AT 🔥
-# 🔥 https://makersuite.google.com/app/apikey 🔥
 os.environ["GOOGLE_API_KEY"] = "AIzaSyAeVVobmTRA1aQpQbm_9_1PGils2PqXDmI"; 
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def index():
     return send_file('web/index.html')
-
 
 @app.route("/api/generate", methods=["POST"])
 def generate_api():
@@ -43,7 +38,6 @@ def generate_api():
 
         except Exception as e:
             return jsonify({ "error": str(e) })
-
 
 @app.route('/<path:path>')
 def serve_static(path):
